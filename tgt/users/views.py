@@ -1,3 +1,31 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
 
-# Create your views here.
+from .models import CustomUser
+from .forms import UserAuthForm
+
+
+
+def login(request):
+    if request.method='GET':
+        return render(request, 'users/login.html', {'form': UserAuthForm})
+    else:
+        user = authenticate(request, username=request.POST['username'],
+                                     password=request.POST['password'])
+        if user is None:
+            return render(request, 'users/login.html', {'form': UserAuthForm(), 
+                                                        'error': 'Не верное имя пользователя или пароль'})
+        else:
+            login(request, user)
+            return redirect('main')
+
+@login_required
+def logout(request):
+    logout(request)
+    return redirect('login')
+
+
+
