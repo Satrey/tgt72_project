@@ -19,4 +19,3 @@ class CustomUser(AbstractUser):
     phone_number_work = models.CharField('Рабочий телефон', max_length=16, blank=True, null=True)
     phone_number_mobile = models.CharField('Мобильный телефон', max_length=12, blank=True, null=True)
     department = models.ForeignKey(Department, blank=True, null=True, on_delete=models.CASCADE, verbose_name='Отдел')
-
