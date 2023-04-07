@@ -4,9 +4,12 @@
     {% include 'components/navbar.html' %}
 {% endblock %}
 
+{% block left_sidebar %}
+    {% include 'components/left_sidebar.html' %}
+{% endblock %}
+
 {% block content %}
-    <h1 class="text-center">You are logged out</h1>
-    <a href="{% url 'login_user' %}">Форма авторизации</a>
+  <h1 class="text-center">This is a main page!</h1>
 {% endblock %}
 
 {% block footer %}

@@ -26,9 +26,9 @@
             {% endblock %}
         </div>
     </header>
-    <main>
-        <div class="container-fluid f-flex">
-            <div class="col-md">
+    <section class="main">
+        <div class="container-fluid d-flex">
+            <div class="col-md-2">
                 {% block left_sidebar %}
                 {% endblock %}
             </div>
@@ -36,12 +36,12 @@
                 {% block content %}
                 {% endblock %}
             </div>
-            <div class="col-md">
+            <div class="col-md-2">
                 {% block right_sidebar %}
                 {% endblock %}
             </div>
         </div>
-    </main>
+    </section>
     <footer>
         <div class="container-fluid">
             {% block footer %}

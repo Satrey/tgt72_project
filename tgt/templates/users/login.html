@@ -4,32 +4,36 @@
     {% include 'components/navbar.html' %}
 {% endblock %}
 
+{% block left_sidebar %}
+    <!-- {% include 'components/left_sidebar.html' %} -->
+{% endblock %}
+
+{% block right_sidebar %}
+    <!-- {% include 'components/right_sidebar.html' %} -->
+{% endblock %}
+
 {% block content %}
-    <div class="row container">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header text-center bg-primary text-white p-3">
-                    <h4 class="text-card-shadow">Авторизация пользователя</h4>
-                     {% if error %}
-                        <div class="alert alert-danger mt-3" role="alert">
-                            {{ error }}
-                        </div>
-                     {% endif %}
+
+    <div class="card shadow login-form m-auto mt-4">
+        <div class="card-header text-center bg-primary text-white p-3">
+            <h4 class="text-card-shadow">Авторизация пользователя</h4>
+                {% if error %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    {{ error }}
                 </div>
-                <form method="post">
-                    <div class="card-body">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                    </div>
-                    <div class="p-4 text-end">
-                        <input class="btn btn-success shadow" type="submit" value="Вход" width="150px">
-                    </div>
-                </form>
-            </div>
+                {% endif %}
         </div>
-        <div class="col-md-2"></div>
+        <form method="post">
+            <div class="card-body">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+            <div class="p-4 text-end">
+                <input class="btn btn-success shadow" type="submit" value="Вход" width="150px">
+            </div>
+        </form>
     </div>
+
 {% endblock %}
 
 {% block footer %}

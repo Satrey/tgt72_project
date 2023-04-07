@@ -20,11 +20,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tests/', include('tests.urls')),
     path('tasks/', include('tasks.urls')),
     path('cross/', include('cross.urls')),
+    path('users/', include('users.urls')),
     path('timesheet/', include('timesheet.urls')),
 ]
 
