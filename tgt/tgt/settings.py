@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'tasks',
     'tests',
     'timesheet',
+    'devices',
 ]
 
 MIDDLEWARE = [
