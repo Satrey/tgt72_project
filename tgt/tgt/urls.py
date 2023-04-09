@@ -28,6 +28,7 @@ urlpatterns = [
     path('cross/', include('cross.urls')),
     path('users/', include('users.urls')),
     path('timesheet/', include('timesheet.urls')),
+    path('devices/', include('devices.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
