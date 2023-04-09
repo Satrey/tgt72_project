@@ -6,7 +6,7 @@ class Device(models.Model):
     address = models.ForeignKey('cross.CrossRoad', on_delete=models.CASCADE)
     device_type = models.ForeignKey('DeviceType', on_delete=models.CASCADE)
     model = models.ForeignKey('DeviceModel', on_delete=models.CASCADE)
-    serial_number =models.IntegerField(verbose_name='Серийный номер')
+    serial_number = models.IntegerField(verbose_name='Серийный номер')
     inventary_number = models.IntegerField(verbose_name='Инвентарный номер')
     ip_address = models.GenericIPAddressField(verbose_name='IP Адрес')
 

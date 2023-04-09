@@ -2,9 +2,9 @@ from django.db import models
 
 
 class CrossRoad(models.Model):
-    address = models.CharField(max_length=100)
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+    address = models.CharField(max_length=100, verbose_name="Адрес")
+    latitude = models.FloatField(verbose_name='Широта')
+    longitude = models.FloatField(verbose_name='Долгота')
 
     class Meta:
         verbose_name = 'Перекрёсток'
