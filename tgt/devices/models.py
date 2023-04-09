@@ -15,7 +15,7 @@ class Device(models.Model):
         verbose_name_plural = "Устройства"
 
     def __str__(self):
-        return self.model
+        return self.model.manufacturer + '  ' + self.model.model
 
 
 class DeviceType(models.Model):
