@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+    <!--    UI Kit-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.14/dist/css/uikit.min.css" />
     <!--    Local css -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
@@ -21,25 +23,25 @@
 
 <body>
     <header>
-        <div class="container-fluid ps-0 pe-0">
+        <div class="uk-container-expand ps-0 pe-0">
             {% block navbar %}
             {% endblock %}
         </div>
     </header>
     <section class="main">
-        <div class="container-fluid d-flex  ps-0 pe-0">
+        <div class="uk-container-expand d-flex  ps-0 pe-0">
             <div class="col-md-2">
                 {% block left_sidebar %}
                 {% endblock %}
             </div>
-            <div class="col-md-8">
+            <div class="col-md-10">
                 {% block content %}
                 {% endblock %}
             </div>
-            <div class="col-md-2">
-                {% block right_sidebar %}
-                {% endblock %}
-            </div>
+<!--            <div class="col-md-2">-->
+<!--                {% block right_sidebar %}-->
+<!--                {% endblock %}-->
+<!--            </div>-->
         </div>
     </section>
     <footer>
@@ -53,6 +55,9 @@
 
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.14/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.14/dist/js/uikit-icons.min.js"></script>
 </body>
 
 </html>

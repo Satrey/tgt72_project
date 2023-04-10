@@ -10,4 +10,14 @@ h1 {
 .left_sidebar {
     height: 90vh;
     position: sticky;
+    border-radius: 4px;
+}
+
+.sidebar-item {
+    color: rgb(0, 0, 0);
+}
+
+.sidebar-item:hover {
+    color: rgba(0, 0, 255, 0.418);
+    background-color: rgba(0, 0, 0, 0.432);
 }

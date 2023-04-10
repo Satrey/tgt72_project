@@ -1,91 +1,57 @@
+{% load static %}
+
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-        <!-- Toggle button -->
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-            data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <!-- Collapsible wrapper -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Navbar brand -->
-            <a class="navbar-brand mt-2 mt-lg-0" href="https://tgt72.ru/">
-                <!-- <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15" alt="MDB Logo"
-                    loading="lazy" /> -->
-                    <h5 class="mb-1">МКУ "Тюменьгортранс"</h5>
-            </a>
-            <!-- Left links -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Team</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Projects</a>
-                </li>
-            </ul>
-            <!-- Left links -->
-        </div>
-        <!-- Collapsible wrapper -->
-
-        <!-- Right elements -->
-        <div class="d-flex align-items-center">
-            <!-- Icon -->
-            <a class="text-reset me-3" href="#">
-                <i class="fas fa-shopping-cart"></i>
-            </a>
-
-            <!-- Notifications -->
-            <div class="dropdown">
-                <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
-                    role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-bell"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">1</span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+<nav class="uk-navbar-container shadow-sm">
+    <div class="uk-container-expand uk-padding-small uk-padding-remove-top uk-padding-remove-bottom">
+        <div uk-navbar class="">
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="https://tgt72.ru/" target="_blank">МКУ "Тюменьгортранс"</a></li>
                     <li>
-                        <a class="dropdown-item" href="#">Some news</a>
+                        <a href="#">Parent <span uk-navbar-parent-icon></span></a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="#">Active</a></li>
+                                <li><a href="#">Item</a></li>
+                                <li class="uk-nav-header">Header</li>
+                                <li><a href="#">Item</a></li>
+                                <li><a href="#">Item</a></li>
+                                <li class="uk-nav-divider"></li>
+                                <li><a href="#">Item</a></li>
+                            </ul>
+                        </div>
                     </li>
-                    <li>
-                        <a class="dropdown-item" href="#">Another news</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
+                    <li><a href="#">Item</a></li>
                 </ul>
+
             </div>
-            <!-- Logged user first name -->
-            <div class="ms-3 me-3">
-                <strong class="text-white">{{ user.first_name }}</strong>
-            </div>
-            
-            <!-- Avatar -->
-            <div class="dropdown">
-                <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar"
-                    role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25"
-                        alt="Black and White Portrait of a Man" loading="lazy" />
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+            <div class="uk-navbar-right">
+                <div class="uk-width-auto">
+                    <img class="uk-border-circle" width="40" height="40" src="{% static 'img/user_avatar/pokrashenko_ag.jpg' %}" alt="Avatar">
+                </div>
+                <ul class="uk-navbar-nav">
+                    {% if user.is_authenticated %}
                     <li>
-                        <a class="dropdown-item" href="#">My profile</a>
+                        <a href="#">{{ user.first_name }} {{ user.last_name }}<span uk-navbar-parent-icon></span></a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="#">Профиль</a></li>
+                                <li><a href="#">Item</a></li>
+                                <li class="uk-nav-header">Header</li>
+                                <li><a href="#">Item</a></li>
+                                <li><a href="#">Item</a></li>
+                                <li class="uk-nav-divider"></li>
+                                <li><a href="{% url 'logout_user' %}">Выход</a></li>
+                            </ul>
+                        </div>
                     </li>
+                    {% else %}
                     <li>
-                        <a class="dropdown-item" href="#">Settings</a>
+                        <a uk-icon="sign-in" href="{% url 'login_user' %}">Авторизоваться</a>
                     </li>
-                    <li>
-                        <a class="dropdown-item" href="{% url 'logout_user' %}">Logout</a>
-                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
-        <!-- Right elements -->
     </div>
-    <!-- Container wrapper -->
 </nav>
-<!-- Navbar -->
