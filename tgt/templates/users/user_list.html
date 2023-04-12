@@ -1,10 +1,10 @@
 {% extends 'users/main.html' %}
 
 {% block content %}
-<div class="card m-2">
+<div class="card m-2 shadow">
 <table class="table align-middle mb-0 bg-white">
-  <thead class="bg-light">
-    <tr>
+  <thead class="bg-dark text-white shadow">
+    <tr class="">
       <th>Информация о сотруднике</th>
       <th>Должность / Отдел</th>
       <th>Телефоны</th>
@@ -14,7 +14,7 @@
   </thead>
   <tbody>
   {% for user in object_list %}
-    <tr>
+    <tr class="table-row">
       <td>
         <div class="d-flex align-items-center">
           <img
