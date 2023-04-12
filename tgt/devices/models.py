@@ -3,12 +3,14 @@ from django.db import models
 
 
 class Device(models.Model):
-    address = models.ForeignKey('cross.CrossRoad', on_delete=models.CASCADE)
-    device_type = models.ForeignKey('DeviceType', on_delete=models.CASCADE)
-    model = models.ForeignKey('DeviceModel', on_delete=models.CASCADE)
-    serial_number = models.IntegerField(verbose_name='Серийный номер')
-    inventary_number = models.IntegerField(verbose_name='Инвентарный номер')
-    ip_address = models.GenericIPAddressField(verbose_name='IP Адрес')
+    address = models.ForeignKey('cross.CrossRoad', on_delete=models.CASCADE, verbose_name='Адрес установки')
+    device_type = models.ForeignKey('DeviceType', on_delete=models.CASCADE, verbose_name='Тип устройства')
+    model = models.ForeignKey('DeviceModel', on_delete=models.CASCADE, verbose_name='Модель устройства')
+    serial_number = models.CharField(max_length=15, verbose_name='Серийный номер')
+    inventary_number = models.IntegerField(blank=True, null=True, verbose_name='Инвентарный номер')
+    ip_address = models.GenericIPAddressField(default='192.168.70.1', verbose_name='IP Адрес устройства')
+    mask = models.GenericIPAddressField(default='255.255.255.0', blank=True, null=True, verbose_name='Маска подсети')
+    gateway = models.GenericIPAddressField(default='192.168.70.1', blank=True, null=True, verbose_name='Шлюз')
 
     class Meta:
         verbose_name = "Устройство"

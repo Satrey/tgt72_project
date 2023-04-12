@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
+from django.views.generic.list import ListView
 
 from .models import CustomUser
 from .forms import UserAuthForm
@@ -32,5 +33,10 @@ def logout_user(request):
 def main(request):
     return render(request, 'users/main.html')
 
+
+class CustomUserListView(ListView):
+    model = CustomUser
+    template_name = 'users/user_list.html'
+    paginate_by = 10
 
 

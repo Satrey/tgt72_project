@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from django.views.generic.list import ListView
+from .models import Device
 
-# Create your views here.
+
+class DeviceListView(ListView):
+    model = Device
+    paginate_by = 12

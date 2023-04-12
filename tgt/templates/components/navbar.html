@@ -1,12 +1,12 @@
 {% load static %}
 
 <!-- Navbar -->
-<nav class="uk-navbar-container shadow-sm">
+<nav class="uk-navbar-container shadow-sm bg-dark text-white">
     <div class="uk-container-expand uk-padding-small uk-padding-remove-top uk-padding-remove-bottom">
         <div uk-navbar class="">
-            <div class="uk-navbar-left">
-                <ul class="uk-navbar-nav">
-                    <li class="uk-active"><a href="https://tgt72.ru/" target="_blank">МКУ "Тюменьгортранс"</a></li>
+            <div class="uk-navbar-left text-white">
+                <ul class="uk-navbar-nav text-white">
+                    <li class="uk-active"><a class="text-white" href="https://tgt72.ru/" target="_blank">МКУ "Тюменьгортранс"</a></li>
                     <li>
                         <a href="#">Parent <span uk-navbar-parent-icon></span></a>
                         <div class="uk-navbar-dropdown">
@@ -27,12 +27,12 @@
             </div>
             <div class="uk-navbar-right">
                 <div class="uk-width-auto">
-                    <img class="uk-border-circle" width="40" height="40" src="{% static 'img/user_avatar/pokrashenko_ag.jpg' %}" alt="Avatar">
+                    {% if user.is_authenticated %}<img class="uk-border-circle" width="40" height="40" src="{{ user.avatar.url }}" alt="Avatar">{% endif %}
                 </div>
                 <ul class="uk-navbar-nav">
                     {% if user.is_authenticated %}
                     <li>
-                        <a href="#">{{ user.first_name }} {{ user.last_name }}<span uk-navbar-parent-icon></span></a>
+                        <a class="text-white" href="#">{{ user.first_name }} {{ user.last_name }}<span uk-navbar-parent-icon></span></a>
                         <div class="uk-navbar-dropdown">
                             <ul class="uk-nav uk-navbar-dropdown-nav">
                                 <li class="uk-active"><a href="#">Профиль</a></li>

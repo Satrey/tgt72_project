@@ -1,10 +1,10 @@
 {% load static %}
 
-<div class="uk-card uk-card-default m-2 left_sidebar shadow">
+<div class="uk-card uk-card-default m-2 me-0 left_sidebar shadow">
     <div class="uk-card-header">
         <div class="uk-grid-small uk-flex-middle" uk-grid>
             <div class="uk-width-auto ps-0">
-                <img class="uk-border-circle" width="40" height="40" src="{% static 'img/user_avatar/pokrashenko_ag.jpg' %}" alt="Avatar">
+                <img class="uk-border-circle" width="40" height="40" src="{{ user.avatar.url }}" alt="Avatar">
             </div>
             <div class="uk-width-expand">
                 <h5 class="uk-card-title uk-margin-remove-bottom">{{ user.first_name }} {{ user.last_name }}</h5>
@@ -14,11 +14,11 @@
     </div>
     <div class="">
     <ul class="uk-nav-default" uk-nav="multiple: true">
-        <li class="uk-active p-3 pt-2 pb-2"><a href="#">Active</a></li>
+        <li class="uk-active p-3 pt-2 pb-2"><a href="#">Отдел: {{ user.department }}</a></li>
         <li class="uk-parent p-3 pt-2 pb-2">
             <a class="" href="#">Оборудование <span uk-nav-parent-icon=""></span></a>
             <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
+                <li><a href="{% url 'device_list' %}">Список устройств</a></li>
                 <li>
                     <a href="#">Sub item</a>
 
@@ -28,8 +28,8 @@
         <li class="uk-parent p-3 pt-2 pb-2">
             <a href="#">Заявки <span uk-nav-parent-icon></span></a>
             <ul class="uk-nav-sub">
-                <li class=""><a href="#">Sub item</a></li>
-                <li class=""><a href="#">Sub item</a></li>
+                <li class=""><a href="#">Текущие</a></li>
+                <li class=""><a href="#">Статистика</a></li>
             </ul>
         </li>
         <li class="uk-parent p-3 pt-2 pb-2">
@@ -51,6 +51,7 @@
         <li class="uk-parent p-3 pt-2 pb-2">
             <a href="#">Управление <span uk-nav-parent-icon></span></a>
             <ul class="uk-nav-sub">
+                <li class=""><a href="{% url 'user_list' %}">Список сопрудников</a></li>
                 <li class=""><a href="#">Учет рабочего времени</a></li>
                 <li><a href="#">График дежурств</a></li>
                 <li><a href="#">График проверки знаний</a></li>

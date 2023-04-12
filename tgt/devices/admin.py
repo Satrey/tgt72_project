@@ -5,8 +5,9 @@ from .models import Device, DeviceType, DeviceModel
 class DeviceAdmin(admin.ModelAdmin):
     model = Device
 
-    search_fields = ('serial_number', 'inventory_number')
-    list_filter = ('device_type', 'model')
+    list_display = ('address', 'model', 'device_type')
+    search_fields = ('address', 'model__manufacturer',)
+    list_filter = ('device_type', 'model', 'address')
 
 
 class DeviceModelAdmin(admin.ModelAdmin):
@@ -21,6 +22,7 @@ class DeviceTypeAdmin(admin.ModelAdmin):
     model = DeviceType
 
     search_fields = ('type',)
+
 
 admin.site.register(Device, DeviceAdmin)
 admin.site.register(DeviceType, DeviceTypeAdmin)
