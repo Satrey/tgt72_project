@@ -1,0 +1,159 @@
+{% extends 'users/main.html' %}
+
+{% block content %}
+<div class="card m-2 shadow">
+    <div class=" text-center p-2 bg-dark shadow mb-3 card-header"><h3 class="text-white shadow mb-1"><strong>Информация о сотруднике</strong></h3></div>
+    <div class="row">
+        <div class="col-md-2">
+            <img class='dp-image card shadow' src="{{ object.avatar.url }}">
+        </div>
+        <div class="col-md-6">
+            <table class="card p-4 me-2 h-100">
+                <tr class="m-3">
+                    <td class="pe-4">
+                        <h4 class="card-text">Фамилия:</h4>
+                    </td>
+                    <td>
+                        <h4 class="card-text">
+                            <strong>{{ object.last_name }}</strong>
+                        </h4>
+                    </td>
+                </tr>
+                <tr class="m-3">
+                    <td class="pe-4">
+                        <h4 class="card-text">Имя:</h4>
+                    </td>
+                    <td>
+                        <h4 class="card-text">
+                            <strong>{{ object.first_name }}</strong>
+                        </h4>
+                    </td>
+                </tr>
+                <tr class="m-3">
+                    <td class="pe-4">
+                        <h4 class="card-text">Отчество:</h4>
+                    </td>
+                    <td>
+                        <h4 class="card-text">
+                            <strong>{{ object.middle_name }}</strong>
+                        </h4>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <table class="card p-4 me-4 ms-0 h-100">
+                
+            </table>
+        </div>
+    </div>
+    <hr class="mb-0">
+    <div class="row p-4">
+        <div class="col-md-4">
+            <div class="card-header bg-dark text-white">Контактная информация</div>
+            <table class="card p-4">
+                <tr class="m-3">
+                    <td class="pe-4">
+                        <h4 class="card-text">Рабочий телефон:</h4>
+                    </td>
+                    <td>
+                        <h4 class="card-text">
+                            <strong>{{ object.phone_namber_work }}</strong>
+                        </h4>
+                    </td>
+                </tr>
+                <tr class="m-3">
+                    <td class="pe-4">
+                        <h4 class="card-text">Мобильный телефон:</h4>
+                    </td>
+                    <td>
+                        <h4 class="card-text">
+                            <strong>{{ object.phone_number_mobile }}</strong>
+                        </h4>
+                    </td>
+                </tr>
+                <tr class="m-3">
+                    <td class="pe-4">
+                        <h4 class="card-text">Электронная почта:</h4>
+                    </td>
+                    <td>
+                        <h4 class="card-text">
+                            <strong>{{ object.email }}</strong>
+                        </h4>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <div class="card-header bg-dark text-white">Рабочая информация</div>
+            <table class="card p-4">
+                <tr class="m-3">
+                    <td class="pe-4">
+                        <h4 class="card-text">Отдел:</h4>
+                    </td>
+                    <td>
+                        <h4 class="card-text">
+                            <strong>{{ object.department }}</strong>
+                        </h4>
+                    </td>
+                </tr>
+                <tr class="m-3">
+                    <td class="pe-4">
+                        <h4 class="card-text">Должность:</h4>
+                    </td>
+                    <td>
+                        <h4 class="card-text">
+                            {% if object.position %}<strong>{{ object.position }}</strong>{% endif %}
+                        </h4>
+                    </td>
+                </tr>
+                <tr class="m-3">
+                    <td class="pe-4">
+                        <h4 class="card-text">Трудоустроен/Стаж:</h4>
+                    </td>
+                    <td>
+                        <h4 class="card-text">
+                            <strong>{{ object.date_of_employment }}/</strong>
+                        </h4>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <div class="card-header bg-dark text-white">Дополнительная информация</div>
+            <table class="card p-4">
+                <tr class="m-3">
+                    <td class="pe-4">
+                        <h4 class="card-text">Фамилия:</h4>
+                    </td>
+                    <td>
+                        <h4 class="card-text">
+                            <strong>{{ object.last_name }}</strong>
+                        </h4>
+                    </td>
+                </tr>
+                <tr class="m-3">
+                    <td class="pe-4">
+                        <h4 class="card-text">Имя:</h4>
+                    </td>
+                    <td>
+                        <h4 class="card-text">
+                            <strong>{{ object.first_name }}</strong>
+                        </h4>
+                    </td>
+                </tr>
+                <tr class="m-3">
+                    <td class="pe-4">
+                        <h4 class="card-text">Отчество:</h4>
+                    </td>
+                    <td>
+                        <h4 class="card-text">
+                            <strong>{{ object.middle_name }}</strong>
+                        </h4>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,16 +1,17 @@
 from django.contrib import admin
 from django.contrib.auth.admin import GroupAdmin, UserAdmin
-from .models import CustomUser, Department
+from .models import CustomUser, Department, Position
 
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('username', 'email', 'first_name', 'middle_name', 'last_name', 'department', 'is_active')
+    list_display = ('username', 'email', 'first_name', 'middle_name',
+                    'last_name', 'department', 'is_active')
 
     fieldsets = (
         ('Main', {'fields': ('username', 'email', 'password')}),
-        ('Departament', {'fields': ('department',)}),
-        ('Personal info', {'fields': ('avatar', 'first_name', 'middle_name', 'last_name')}),
+        ('Departament', {'fields': ('department', 'position', 'date_of_employment',)}),
+        ('Personal info', {'fields': ('avatar', 'first_name', 'middle_name', 'last_name', 'date_of_birth')}),
         ('Contact info', {'fields': ('phone_number_work', 'phone_number_mobile')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
@@ -31,8 +32,16 @@ class CustomUserAdmin(UserAdmin):
 
 
 class DepartmentAdmin(admin.ModelAdmin):
+    model = Department
     prepopulated_fields = {'slug': ('department',)}
 
 
-admin.site.register(CustomUser, CustomUserAdmin)
+class PositionAdmin(admin.ModelAdmin):
+    model = Position
+    prepopulated_fields = {'slug': ('name',)}
+
+
 admin.site.register(Department, DepartmentAdmin)
+admin.site.register(Position, PositionAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)
+

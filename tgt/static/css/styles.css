@@ -23,7 +23,21 @@ h1 {
 }
 
 .table-row:hover {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.432);
-    box-shadow: 2px 2px  15px rgba(0, 0, 0, 0.253);
+    color: black;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.356)
+    background-color: rgba(160, 160, 160, 0.432);
+}
+
+.dp-image {
+    width: 300px;
+    height: auto;
+    border-style: solid;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: rgb(233, 233, 233);
+    margin-left: 20px;
+}
+
+.card-text {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.365);
 }
