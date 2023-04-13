@@ -15,6 +15,7 @@
   <tbody>
   {% for user in object_list %}
     <tr class="table-row">
+
       <td>
         <div class="d-flex align-items-center">
           <img
@@ -41,9 +42,10 @@
         <span class="badge badge-success rounded-pill d-inline">Active</span></td>
       <td>
         <button type="button" class="btn btn-link btn-sm btn-rounded">
-          Редактировать
+          <a href="{% url 'user_detail' user.pk %}">Просмотр</a>
         </button>
       </td>
     </tr>
+    </a>
     {% endfor %}
 {% endblock %}

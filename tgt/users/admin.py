@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import GroupAdmin, UserAdmin
-from .models import CustomUser, Department
+from .models import CustomUser, Department, Position
 
 
 class CustomUserAdmin(UserAdmin):
@@ -9,8 +9,8 @@ class CustomUserAdmin(UserAdmin):
 
     fieldsets = (
         ('Main', {'fields': ('username', 'email', 'password')}),
-        ('Departament', {'fields': ('department',)}),
-        ('Personal info', {'fields': ('avatar', 'first_name', 'middle_name', 'last_name')}),
+        ('Departament', {'fields': ('department', 'position', 'work_experience')}),
+        ('Personal info', {'fields': ('avatar', 'first_name', 'middle_name', 'last_name', 'date_of_birth')}),
         ('Contact info', {'fields': ('phone_number_work', 'phone_number_mobile')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
@@ -34,5 +34,10 @@ class DepartmentAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('department',)}
 
 
+class PositionAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Department, DepartmentAdmin)
+admin.site.register(Position, PositionAdmin)

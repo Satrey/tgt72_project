@@ -4,6 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 
 from .models import CustomUser
 from .forms import UserAuthForm
@@ -38,5 +39,10 @@ class CustomUserListView(ListView):
     model = CustomUser
     template_name = 'users/user_list.html'
     paginate_by = 10
+
+
+class UserDetailView(DetailView):
+    model = CustomUser
+    template_name = 'users/user_detail.html'
 
 
