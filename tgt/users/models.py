@@ -47,7 +47,27 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.first_name + self.middle_name + self.last_name
 
-    def get_work_experience(self):
-        date_now = timezone.now()
-        return date_now - self.date_of_employment
+    @property
+    def experience(self):
+        date_now = timezone.now().date()
+        year = (date_now - self.date_of_employment).days
+        year = int(year) // 365
+        month = (date_now - self.date_of_employment).days
+        month = (int(month) % 365) // 31
+        year_str = ''
+        month_str = ''
+        if 1<year<5:
+            year_str = 'года'
+        elif year == 1:
+            year_str = 'год'
+        elif year > 5:
+            year_str = 'лет'
+
+        if 1<month<5:
+            month_str = 'месяца'
+        elif month == 1:
+            month_str = 'месяц'
+        elif month > 5:
+            month_str = 'месяцев'
+        return str(year) + ' ' + year_str + ' ' + str(month) + ' ' + month_str
 
