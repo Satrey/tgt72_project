@@ -2,8 +2,6 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 
-import datetime
-
 
 class Department(models.Model):
     department = models.CharField('Отдел', max_length=50)
@@ -44,7 +42,7 @@ class CustomUser(AbstractUser):
         verbose_name_plural = 'Пользователи'
 
     def __str__(self):
-        return self.first_name + self.middle_name + self.last_name
+        return self.first_name
 
     @property
     def experience(self):
