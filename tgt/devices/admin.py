@@ -9,6 +9,14 @@ class DeviceAdmin(admin.ModelAdmin):
     search_fields = ('address', 'model__manufacturer',)
     list_filter = ('device_type', 'model', 'address')
 
+    # fieldsets = (
+    #     ('Main', {'fields': ('address', 'device_type', 'model')}),
+    #     ('Departament', {'fields': (('serial_number', 'inventary_number',))}),
+    #     ('Contact info', {'fields': ('phone_number_work', 'phone_number_mobile')}),
+    #     ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
+    #     ('Important dates', {'fields': ('last_login', 'date_joined')}),
+    # )
+
 
 class DeviceModelAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('model',)}

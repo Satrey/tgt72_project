@@ -32,7 +32,6 @@ class Position(models.Model):
 class CustomUser(AbstractUser):
     middle_name = models.CharField('Отчество', max_length=50, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True, verbose_name='Дата рождения')
-    age = models.IntegerField(blank=True, null=True, verbose_name='Возраст')
     phone_number_work = models.CharField('Рабочий телефон', max_length=16, blank=True, null=True)
     phone_number_mobile = models.CharField('Мобильный телефон', max_length=12, blank=True, null=True)
     department = models.ForeignKey(Department, blank=True, null=True, on_delete=models.CASCADE, verbose_name='Отдел')
@@ -49,25 +48,44 @@ class CustomUser(AbstractUser):
 
     @property
     def experience(self):
-        date_now = timezone.now().date()
-        year = (date_now - self.date_of_employment).days
-        year = int(year) // 365
-        month = (date_now - self.date_of_employment).days
-        month = (int(month) % 365) // 31
-        year_str = ''
-        month_str = ''
-        if 1<year<5:
-            year_str = 'года'
-        elif year == 1:
-            year_str = 'год'
-        elif year > 5:
-            year_str = 'лет'
+        if self.date_of_employment:
+            date_now = timezone.now().date()
+            year = (date_now - self.date_of_employment).days
+            year = int(year) // 365
+            month = (date_now - self.date_of_employment).days
+            month = (int(month) % 365) // 31
+            year_str = ''
+            month_str = ''
+            if 1 < year < 5:
+                year_str = 'года'
+            elif year == 1:
+                year_str = 'год'
+            elif year > 5:
+                year_str = 'лет'
 
-        if 1<month<5:
-            month_str = 'месяца'
-        elif month == 1:
-            month_str = 'месяц'
-        elif month > 5:
-            month_str = 'месяцев'
-        return str(year) + ' ' + year_str + ' ' + str(month) + ' ' + month_str
+            if 1<month<5:
+                month_str = 'месяца'
+            elif month == 1:
+                month_str = 'месяц'
+            elif month > 5:
+                month_str = 'месяцев'
+            return str(year) + ' ' + year_str + ' ' + str(month) + ' ' + month_str
+        else:
+            return 'Стаж отсутствует'
+
+    @property
+    def employer_age(self):
+        date_now = timezone.now().date()
+        year = (date_now - self.date_of_birth).days
+        year = int(year) // 365
+        text = ''
+        if (year % 10 == 0) or (9 >= year % 10 >= 5):
+            text += 'лет'
+        elif year % 10 == 1:
+            text += 'год'
+        else:
+            text += 'года'
+
+        return str(year) + '  ' + text
+
 

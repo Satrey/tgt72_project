@@ -6,12 +6,13 @@ from .models import CustomUser, Department, Position
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
     list_display = ('username', 'email', 'first_name', 'middle_name',
-                    'last_name', 'department', 'is_active')
+                    'last_name', 'employer_age', 'department', 'is_active')
 
     fieldsets = (
         ('Main', {'fields': ('username', 'email', 'password')}),
         ('Departament', {'fields': ('department', 'position', 'date_of_employment')}),
-        ('Personal info', {'fields': ('avatar', 'first_name', 'middle_name', 'last_name', 'date_of_birth')}),
+        ('Personal info', {'fields': ('avatar', 'first_name', 'middle_name', 'last_name', 'date_of_birth',
+                                      'employer_age')}),
         ('Contact info', {'fields': ('phone_number_work', 'phone_number_mobile')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
