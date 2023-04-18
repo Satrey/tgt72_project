@@ -12,7 +12,7 @@ class Task(models.Model):
     task_sender = models.CharField(max_length=50, blank=True, null=True, verbose_name='Передал заявку')
     task_receiver = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE, blank=True, null=True,
                                       verbose_name='Принял заявку')
-    task_act_number = models.IntegerField(null=True, blank=True, verbose_name='Номер акта наряда')
+    task_act_number = models.IntegerField(null=True, blank=True, verbose_name='Номер акта')
     task_work_description = models.TextField(null=True, blank=True, verbose_name='Выполненные работы')
     task_end_date = models.DateTimeField(auto_now=True, blank=True, null=True,
                                          verbose_name='Время завершения')
