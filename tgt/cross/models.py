@@ -3,6 +3,7 @@ from django.db import models
 
 class CrossRoad(models.Model):
     address = models.CharField(max_length=100, verbose_name="Адрес")
+    number = models.IntegerField(null=True, blank=True, verbose_name='Номер перекрёстка')
     latitude = models.FloatField(verbose_name='Широта')
     longitude = models.FloatField(verbose_name='Долгота')
 

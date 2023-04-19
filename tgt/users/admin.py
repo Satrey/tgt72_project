@@ -6,7 +6,7 @@ from .models import CustomUser, Department, Position
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
     list_display = ('username', 'email', 'first_name', 'middle_name',
-                    'last_name', 'department', 'is_active')
+                    'last_name', 'department', 'user_fio', 'is_active')
 
     fieldsets = (
         ('Main', {'fields': ('username', 'email', 'password')}),

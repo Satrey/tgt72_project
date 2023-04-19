@@ -42,7 +42,7 @@ class CustomUser(AbstractUser):
         verbose_name_plural = 'Пользователи'
 
     def __str__(self):
-        return self.last_name
+        return self.user_fio
 
     @property
     def experience(self):
@@ -86,4 +86,7 @@ class CustomUser(AbstractUser):
 
         return str(year) + '  ' + text
 
+    @property
+    def user_fio(self):
+        return self.last_name + ' ' + self.first_name[0].upper() + '.' + self.middle_name[0].upper()
 

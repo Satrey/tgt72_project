@@ -2,11 +2,16 @@ from django.contrib import admin
 from .models import Device, DeviceType, DeviceModel
 
 
+class DeviceModelInline(admin.TabularInline):
+    model = DeviceModel
+    prepopulated_fields = {'slug': ('manufacturer', 'model',)}
+    extra = 0
+
+
 class DeviceAdmin(admin.ModelAdmin):
     model = Device
 
     list_display = ('address', 'model', 'device_type')
-    search_fields = ('address', 'model__manufacturer',)
     list_filter = ('device_type', 'model', 'address')
 
     # fieldsets = (
@@ -21,13 +26,16 @@ class DeviceAdmin(admin.ModelAdmin):
 class DeviceModelAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('model',)}
     model = DeviceModel
-    list_filter = ('type', 'model')
+    list_display = ('manufacturer', 'model', 'type',)
+    list_filter = ('manufacturer', 'type', 'model')
     search_fields = ('manufacturer',)
+    ordering = ('manufacturer', 'type', 'model',)
 
 
 class DeviceTypeAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('type',)}
     model = DeviceType
+    inlines = (DeviceModelInline,)
 
     search_fields = ('type',)
 

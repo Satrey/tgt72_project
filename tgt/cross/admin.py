@@ -9,16 +9,14 @@ class DeviceInline(admin.TabularInline):
 
 
 class CrossRoadAdmin(admin.ModelAdmin):
-    list_display = ('address', 'latitude', 'longitude',)
+    model = CrossRoad
+    list_display = ('address', 'number', 'latitude', 'longitude',)
     ordering = ('address',)
     search_fields = ('address',)
     inlines = [DeviceInline]
 
-    class Meta:
-        model = CrossRoad
-
     fieldsets = (
-        ('Местоположение', {'fields': ('address', 'latitude', 'longitude')}),
+        ('Местоположение', {'fields': ('address', 'number', 'latitude', 'longitude')}),
     )
 
 
