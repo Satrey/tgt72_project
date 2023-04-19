@@ -12,7 +12,7 @@ class CrossRoad(models.Model):
         verbose_name_plural = 'Перекрёстки'
 
     def __str__(self):
-        return self.address
+        return str(self.address)
 
 
 

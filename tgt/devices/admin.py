@@ -10,10 +10,9 @@ class DeviceModelInline(admin.TabularInline):
 
 class DeviceAdmin(admin.ModelAdmin):
     model = Device
-
     list_display = ('address', 'model', 'device_type')
     list_filter = ('device_type', 'model', 'address')
-
+    search_fields = ('address__address',)
     # fieldsets = (
     #     ('Main', {'fields': ('address', 'device_type', 'model')}),
     #     ('Departament', {'fields': (('serial_number', 'inventary_number',))}),
