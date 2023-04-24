@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'tests',
     'timesheet',
     'devices',
+    'rest_framework',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -137,9 +139,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-
 AUTH_USER_MODEL = 'users.CustomUser'
-
-
 LOGIN_URL = 'login_user'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
