@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-oi8#le)82+azwa6s#iatscl8)$pq=_m_c5#1$+z-^d6df^chx7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'http://192.168.65.138:9000/',
+    'http://localhost:9000/'
+    'http://127.0.0.1:8000',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -45,16 +50,24 @@ INSTALLED_APPS = [
     'devices',
     'rest_framework',
     'api',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:9000",
+    "http://127.0.0.1:9000",
+    'http://127.0.0.1:8000',
 ]
 
 ROOT_URLCONF = 'tgt.urls'
