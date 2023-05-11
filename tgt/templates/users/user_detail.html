@@ -3,62 +3,66 @@
 {% block content %}
 <div class="card m-2 shadow">
     <div class=" text-center p-2 bg-dark shadow mb-3 card-header"><h3 class="text-white shadow mb-1"><strong>Информация о сотруднике</strong></h3></div>
-    <div class="row">
-        <div class="col-md-2">
-            <img class='dp-image card shadow' src="{{ object.avatar.url }}">
+    <div class="row d-flex justify-content-between">
+        <div class="d-flex">
+            <div class="col-md-2 ms-4 me-2">
+                <img class='dp-image card shadow ' src="{{ object.avatar.url }}">
+            </div>
+            <div class="col-md-3">
+                <table class="card p-4 me-2 h-100">
+                    <tr class="m-3">
+                        <td class="pe-4">
+                            <h4 class="card-text">Фамилия:</h4>
+                        </td>
+                        <td>
+                            <h4 class="card-text">
+                                <strong>{{ object.last_name }}</strong>
+                            </h4>
+                        </td>
+                    </tr>
+                    <tr class="m-3">
+                        <td class="pe-4">
+                            <h4 class="card-text">Имя:</h4>
+                        </td>
+                        <td>
+                            <h4 class="card-text">
+                                <strong>{{ object.first_name }}</strong>
+                            </h4>
+                        </td>
+                    </tr>
+                    <tr class="m-3">
+                        <td class="pe-4">
+                            <h4 class="card-text">Отчество:</h4>
+                        </td>
+                        <td>
+                            <h4 class="card-text">
+                                <strong>{{ object.middle_name }}</strong>
+                            </h4>
+                        </td>
+                    </tr>
+                    <tr class="m-3">
+                        <td class="pe-4">
+                            <h4 class="card-text">Возраст:</h4>
+                        </td>
+                        <td>
+                            <h4 class="card-text">
+                                <strong>{{ object.employer_age }}</strong>
+                            </h4>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
-        <div class="col-md-6">
-            <table class="card p-4 me-2 h-100">
-                <tr class="m-3">
-                    <td class="pe-4">
-                        <h4 class="card-text">Фамилия:</h4>
-                    </td>
-                    <td>
-                        <h4 class="card-text">
-                            <strong>{{ object.last_name }}</strong>
-                        </h4>
-                    </td>
-                </tr>
-                <tr class="m-3">
-                    <td class="pe-4">
-                        <h4 class="card-text">Имя:</h4>
-                    </td>
-                    <td>
-                        <h4 class="card-text">
-                            <strong>{{ object.first_name }}</strong>
-                        </h4>
-                    </td>
-                </tr>
-                <tr class="m-3">
-                    <td class="pe-4">
-                        <h4 class="card-text">Отчество:</h4>
-                    </td>
-                    <td>
-                        <h4 class="card-text">
-                            <strong>{{ object.middle_name }}</strong>
-                        </h4>
-                    </td>
-                </tr>
-                <tr class="m-3">
-                    <td class="pe-4">
-                        <h4 class="card-text">Возраст:</h4>
-                    </td>
-                    <td>
-                        <h4 class="card-text">
-                            <strong>{{ object.employer_age }}</strong>
-                        </h4>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="col-md-4">
+
+        <div class="col-md-5">
             <table class="card p-4 me-4 ms-0 h-100">
                 <tr>
                     <td>{% lorem %}</td>
                 </tr>
             </table>
         </div>
-    </div>
+        </div>
+
     <hr class="mb-0">
     <div class="row p-4">
         <div class="col-md-4">

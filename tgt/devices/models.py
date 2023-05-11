@@ -11,6 +11,8 @@ class Device(models.Model):
     ip_address = models.GenericIPAddressField(default='192.168.70.1', verbose_name='IP Адрес устройства')
     mask = models.GenericIPAddressField(default='255.255.255.0', blank=True, null=True, verbose_name='Маска подсети')
     gateway = models.GenericIPAddressField(default='192.168.70.1', blank=True, null=True, verbose_name='Шлюз')
+    mobile_profile = models.ForeignKey('MobileProfile', on_delete=models.PROTECT,
+                                       blank=True, null=True, verbose_name='SIM Карта')
 
     class Meta:
         verbose_name = "Устройство"
@@ -35,7 +37,7 @@ class DeviceType(models.Model):
 class DeviceModel(models.Model):
     manufacturer = models.CharField(max_length=50, blank=True, null=True, verbose_name='Проиводитель')
     model = models.CharField(max_length=100, blank=True, null=True, verbose_name='Модель оборудования')
-    type = models.ForeignKey(DeviceType, on_delete=models.CASCADE, blank=True, null=True, verbose_name='Тип устройства')
+    type = models.ForeignKey(DeviceType, on_delete=models.PROTECT, blank=True, null=True, verbose_name='Тип устройства')
     slug = models.SlugField(max_length=120, blank=True, null=True, verbose_name='Слаг')
 
     class Meta:
@@ -44,3 +46,24 @@ class DeviceModel(models.Model):
 
     def __str__(self):
         return str(self.model)
+
+
+class MobileProfile(models.Model):
+    phone_number = models.CharField(max_length=12, verbose_name='Номер телефона')
+    sim_number = models.CharField(max_length=25, verbose_name='Номер SIM карты')
+    pin1 = models.CharField(max_length=6, blank=True, verbose_name='PIN код 1')
+    pin2 = models.CharField(max_length=6, blank=True, verbose_name='PIN код 2')
+    puk1 = models.CharField(max_length=12, blank=True, verbose_name='PUK код 1')
+    puk2 = models.CharField(max_length=12, blank=True, verbose_name='PUK код 2')
+    serial_number = models.CharField(max_length=20, blank=True, verbose_name='Серийный номер')
+    dedicated_IP = models.GenericIPAddressField(blank=True, null=True, verbose_name='Выделенный IP адрес')
+    open_vpn_IP = models.GenericIPAddressField(blank=True, null=True, verbose_name='Open VPN IP адрес')
+
+    class Meta:
+        verbose_name = 'SIM карта'
+        verbose_name_plural = 'SIM карты'
+
+    def __str__(self):
+        return self.phone_number
+
+

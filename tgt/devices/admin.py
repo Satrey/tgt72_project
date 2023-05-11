@@ -1,11 +1,15 @@
 from django.contrib import admin
-from .models import Device, DeviceType, DeviceModel
+from .models import Device, DeviceType, DeviceModel, MobileProfile
 
 
 class DeviceModelInline(admin.TabularInline):
     model = DeviceModel
     prepopulated_fields = {'slug': ('manufacturer', 'model',)}
     extra = 0
+
+
+class MobileProfileAdmin(admin.ModelAdmin):
+    model = MobileProfile
 
 
 class DeviceAdmin(admin.ModelAdmin):
@@ -40,5 +44,6 @@ class DeviceTypeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Device, DeviceAdmin)
+admin.site.register(MobileProfile, MobileProfileAdmin)
 admin.site.register(DeviceType, DeviceTypeAdmin)
 admin.site.register(DeviceModel, DeviceModelAdmin)

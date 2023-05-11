@@ -1,15 +1,13 @@
 <template>
   <q-page class="flex flex-center">
     <div>
-      <div v-for="item in store.$state.routers.data" :key="item.id">
-        {{ item }}
+      <div v-for="item in store.routers.data"
+        :key="item.id"        
+      >
+        <a href="">{{ item }}</a>
       </div>
     </div>
-    <!-- <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    > -->
+    {{ store.routers.data }}
   </q-page>
 </template>
 
@@ -27,13 +25,18 @@ export default defineComponent({
     }
   },
 
+  data() {
+    return {
+
+    }
+  },
+
   computed: {
 
   },
 
   mounted() {
     this.store.routerList()
-    console.log('Список маршрутов')
     console.log(this.store.routers)
   },
 
